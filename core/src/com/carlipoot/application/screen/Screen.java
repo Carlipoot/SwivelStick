@@ -1,5 +1,8 @@
 package com.carlipoot.application.screen;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
@@ -64,4 +67,12 @@ public abstract class Screen implements Disposable {
      */
     public abstract void dispose();
 
+    /**
+     * Clears the screen to the specified colour.
+     * @param colour the colour to set the screen.
+     */
+    public void clearScreen(Color colour) {
+        Gdx.gl.glClearColor(colour.r, colour.g, colour.b, colour.a);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    }
 }

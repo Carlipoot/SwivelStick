@@ -1,5 +1,6 @@
 package com.carlipoot.application.entity;
 
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.carlipoot.application.Application;
 import com.carlipoot.application.manager.EntityManager;
@@ -22,6 +23,7 @@ public abstract class Entity extends Actor {
     protected ResourceManager resourceManager;
 
     private Application application;
+    private Body body;
 
     /**
      * Creates an Entity with a reference to the EntityManager.
@@ -31,8 +33,11 @@ public abstract class Entity extends Actor {
         this.entityManager = entityManager;
         application = entityManager.getApplication();
         resourceManager = application.getResourceManager();
+
+        body = null;
     }
 
-
+    // These may be required soon
+    public abstract void update(float delta);
 
 }

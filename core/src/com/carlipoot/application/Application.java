@@ -114,6 +114,14 @@ public class Application implements ApplicationListener {
 	public void resume() {}
 
 	/**
+	 * Gets the EntityManager.
+	 * @return the EntityManager.
+	 */
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	/**
 	 * Gets the ResourceManager.
 	 * @return the ResourceManager.
 	 */

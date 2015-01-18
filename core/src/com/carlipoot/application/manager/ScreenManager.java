@@ -30,9 +30,9 @@ public class ScreenManager {
     public static final int CREDIT = IDHelper.nextID();
 
     /**
-     * ID for the level screen.
+     * ID for the game screen.
      */
-    public static final int LEVEL = IDHelper.nextID();
+    public static final int GAME = IDHelper.nextID();
 
 
     private Application application;
@@ -45,7 +45,7 @@ public class ScreenManager {
     public ScreenManager(Application application) {
         this.application = application;
         screenStack = new Stack<Screen>();
-        pushScreen(MENU);
+        pushScreen(GAME);
     }
 
     /**
@@ -60,7 +60,7 @@ public class ScreenManager {
         if ( screen == MENU ) return new MenuScreen(this);
         if ( screen == PLAY ) return new PlayScreen(this);
         if ( screen == CREDIT ) return new CreditScreen(this);
-        if ( screen == LEVEL ) return new GameScreen(this);
+        if ( screen == GAME ) return new GameScreen(this);
         return null;
     }
 
