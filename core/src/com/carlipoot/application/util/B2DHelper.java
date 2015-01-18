@@ -1,4 +1,4 @@
-package com.carlipoot.game.util;
+package com.carlipoot.application.util;
 
 /**
  * Helper class for all Box2D needs.

@@ -1,11 +1,13 @@
-package com.carlipoot.game.manager;
+package com.carlipoot.application.manager;
 
-import static com.carlipoot.game.input.Input.*;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 
+import static com.carlipoot.application.input.Input.SPACEBAR;
+import static com.carlipoot.application.input.Input.setInput;
+
 /**
- * Manages input from the device and/or peripherals, and redirects it to the application for handling.
+ * Manages input from the device and/or peripherals, and redirects it to the Application for handling.
  * @author Carlipoot
  */
 public class InputManager extends InputAdapter {

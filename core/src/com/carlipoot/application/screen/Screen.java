@@ -1,10 +1,10 @@
-package com.carlipoot.game.screen;
+package com.carlipoot.application.screen;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
-import com.carlipoot.game.Application;
-import com.carlipoot.game.manager.ScreenManager;
+import com.carlipoot.application.Application;
+import com.carlipoot.application.manager.ScreenManager;
 
 /**
  * An abstract class that defines a screen.
@@ -13,28 +13,28 @@ import com.carlipoot.game.manager.ScreenManager;
 public abstract class Screen implements Disposable {
 
     /**
-     * A reference to the screen manager that manages all screens.
+     * A reference to the ScreenManager that manages every Screen.
      */
     protected ScreenManager screenManager;
 
     /**
-     * A reference to the application.
+     * A reference to the Application.
      */
     protected Application application;
 
     /**
-     * A reference to the main camera for all screens.
+     * A reference to the OrthographicCamera for every Screen.
      */
     protected OrthographicCamera camera;
 
     /**
-     * A reference to the main sprite batch for all screens.
+     * A reference to the SpriteBatch for every Screen.
      */
     protected SpriteBatch spriteBatch;
 
     /**
-     * Creates a new scene with a scene manager and sets all references.
-     * @param screenManager the screen manager to manage the screen.
+     * Creates a new Screen with a ScreenManager and sets all references.
+     * @param screenManager the ScreenManager to manage the Screen.
      */
     protected Screen(ScreenManager screenManager) {
         this.screenManager = screenManager;
@@ -49,18 +49,18 @@ public abstract class Screen implements Disposable {
     public abstract void handleInput();
 
     /**
-     * Renders the screen and all components.
+     * Renders the Screen and all components.
      */
     public abstract void render();
 
     /**
-     * Updates the screen and all components.
+     * Updates the Screen and all components.
      * @param delta the change in time.
      */
     public abstract void update(float delta);
 
     /**
-     * Disposes the screen and all components.
+     * Disposes the Screen and all components.
      */
     public abstract void dispose();
 

@@ -1,8 +1,8 @@
-package com.carlipoot.game.desktop;
+package com.carlipoot.application.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.carlipoot.game.Application;
+import com.carlipoot.application.Application;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

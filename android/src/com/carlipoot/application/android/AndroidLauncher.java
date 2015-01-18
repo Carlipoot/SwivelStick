@@ -1,10 +1,9 @@
-package com.carlipoot.game.android;
+package com.carlipoot.application.android;
 
 import android.os.Bundle;
-
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.carlipoot.game.Application;
+import com.carlipoot.application.Application;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override

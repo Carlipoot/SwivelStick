@@ -1,54 +1,56 @@
-package com.carlipoot.game.manager;
+package com.carlipoot.application.manager;
 
-import com.carlipoot.game.Application;
-import com.carlipoot.game.screen.*;
+import com.carlipoot.application.Application;
+import com.carlipoot.application.screen.*;
+import com.carlipoot.application.util.IDHelper;
+
 import java.util.Stack;
 
 /**
- * Manages all screens of the application.
+ * Manages all screens of the Application.
  * <br><br>
- * This includes creating, rendering, updating and destroying the screens.
+ * This includes creating, rendering, updating and destroying the Screen.
  * @author Carlipoot
  */
 public class ScreenManager {
 
-    private Application application;
-
-    private Stack<Screen> screenStack;
-
     /**
      * ID for the main menu screen.
      */
-    public static final int MENU = 10000;
+    public static final int MENU = IDHelper.nextID();
 
     /**
      * ID for the level select screen.
      */
-    public static final int PLAY = 10001;
+    public static final int PLAY = IDHelper.nextID();
 
     /**
      * ID for the credits screen.
      */
-    public static final int CREDIT = 10002;
+    public static final int CREDIT = IDHelper.nextID();
 
     /**
      * ID for the level screen.
      */
-    public static final int LEVEL = 10003;
+    public static final int LEVEL = IDHelper.nextID();
+
+
+    private Application application;
+    private Stack<Screen> screenStack;
 
     /**
-     * Creates a screen manager with a reference to the application.
-     * @param application the application reference.
+     * Creates a ScreenManager with a reference to the Application.
+     * @param application the Application reference.
      */
     public ScreenManager(Application application) {
         this.application = application;
         screenStack = new Stack<Screen>();
-        pushScreen(LEVEL);
+        pushScreen(MENU);
     }
 
     /**
-     * Gets the application reference.
-     * @return the reference to the application.
+     * Gets the Application reference.
+     * @return the reference to the Application.
      */
     public Application getApplication() {
         return application;
@@ -63,7 +65,7 @@ public class ScreenManager {
     }
 
     /**
-     * Removes the most recent screen.
+     * Removes the most recent Screen.
      */
     public void popScreen() {
         Screen screen = screenStack.pop();
@@ -71,16 +73,16 @@ public class ScreenManager {
     }
 
     /**
-     * Sets the current screen to the specified screen.
-     * @param screen the ID of the screen.
+     * Sets the current Screen to the specified Screen.
+     * @param screen the ID of the Screen.
      */
     public void pushScreen(int screen) {
         screenStack.push(getScreen(screen));
     }
 
     /**
-     * Swaps the current screen to the specified screen.
-     * @param screen the ID of the screen.
+     * Swaps the current Screen to the specified Screen.
+     * @param screen the ID of the Screen.
      */
     public void setScreen(int screen) {
         popScreen();
@@ -88,14 +90,14 @@ public class ScreenManager {
     }
 
     /**
-     * Renders the current screen.
+     * Renders the current Screen.
      */
     public void render() {
         screenStack.peek().render();
     }
 
     /**
-     * Updates the current screen.
+     * Updates the current Screen.
      * @param delta the change in time.
      */
     public void update(float delta) {

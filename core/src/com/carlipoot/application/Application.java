@@ -1,23 +1,25 @@
-package com.carlipoot.game;
+package com.carlipoot.application;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.carlipoot.game.input.Input;
-import com.carlipoot.game.manager.InputManager;
-import com.carlipoot.game.manager.ScreenManager;
+import com.carlipoot.application.input.Input;
+import com.carlipoot.application.manager.EntityManager;
+import com.carlipoot.application.manager.InputManager;
+import com.carlipoot.application.manager.ResourceManager;
+import com.carlipoot.application.manager.ScreenManager;
 
 /**
- * The main class that is launched on application startup.
+ * The main class that is launched on Application startup.
  * <br><br>
- * This is the top most layer of the application. All rendering calls originate from here.
+ * This is the top most layer of the Application. All rendering calls originate from here.
  * @author Carlipoot
  */
 public class Application implements ApplicationListener {
 
 	/**
-	 * The title of the application.
+	 * The title of the Application.
 	 */
 	public static final String TITLE = "Swivel Stick";
 
@@ -39,7 +41,7 @@ public class Application implements ApplicationListener {
 	/**
 	 * The constant time step used for rendering and updating.
 	 */
-	public static final float STEP = 1 / 60f;
+	public static final float STEP = 1.0f / 60.0f;
 
 
 	private float accumulator;
@@ -47,10 +49,12 @@ public class Application implements ApplicationListener {
 	private SpriteBatch spriteBatch;
 	private OrthographicCamera camera;
 
-	private ScreenManager manager;
+	private EntityManager entityManager;
+	private ResourceManager resourceManager;
+	private ScreenManager screenManager;
 
 	/**
-	 * Called on application startup.
+	 * Called on Application startup.
 	 */
 	@Override
 	public void create () {
@@ -59,7 +63,9 @@ public class Application implements ApplicationListener {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, WIDTH, HEIGHT);
 
-		manager = new ScreenManager(this);
+		entityManager = new EntityManager(this);
+		resourceManager = new ResourceManager(this);
+		screenManager = new ScreenManager(this);
 
 		Gdx.input.setInputProcessor(new InputManager());
 	}
@@ -73,14 +79,14 @@ public class Application implements ApplicationListener {
 
 		while (accumulator >= STEP ) {
 			accumulator -= STEP;
-			manager.update(STEP);
-			manager.render();
+			screenManager.update(STEP);
+			screenManager.render();
 			Input.update();
 		}
 	}
 
 	/**
-	 * Called on application end. Cleans up all created objects.
+	 * Called on Application end. Cleans up all created objects.
 	 */
 	@Override
 	public void dispose() {
@@ -96,30 +102,39 @@ public class Application implements ApplicationListener {
 	public void resize(int width, int height) {}
 
 	/**
-	 * Called when application loses focus.
+	 * Called when Application loses focus.
 	 */
 	@Override
 	public void pause() {}
 
 	/**
-	 * Called when the application gains focus.
+	 * Called when the Application gains focus.
 	 */
 	@Override
 	public void resume() {}
 
 	/**
-	 * Gets the main sprite batch.
-	 * @return the sprite batch.
+	 * Gets the ResourceManager.
+	 * @return the ResourceManager.
+	 */
+	public ResourceManager getResourceManager() {
+		return resourceManager;
+	}
+
+	/**
+	 * Gets the main SpriteBatch.
+	 * @return the SpriteBatch.
 	 */
 	public SpriteBatch getSpriteBatch() {
 		return spriteBatch;
 	}
 
 	/**
-	 * Gets the main camera.
-	 * @return the camera.
+	 * Gets the OrthographicCamera.
+	 * @return the OrthographicCamera.
 	 */
 	public OrthographicCamera getCamera() {
 		return camera;
 	}
+
 }

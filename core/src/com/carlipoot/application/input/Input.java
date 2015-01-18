@@ -1,7 +1,7 @@
-package com.carlipoot.game.input;
+package com.carlipoot.application.input;
 
 /**
- * The state of the inputs handled by the application.
+ * The state of the inputs handled by the Application.
  * @author Carlipoot
  */
 public class Input {

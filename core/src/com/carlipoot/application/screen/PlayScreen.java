@@ -1,17 +1,17 @@
-package com.carlipoot.game.screen;
+package com.carlipoot.application.screen;
 
-import com.carlipoot.game.manager.ScreenManager;
+import com.carlipoot.application.manager.ScreenManager;
 
 /**
- * The screen that displays the levels to select from.
+ * The Screen that displays the levels to select from.
  * @author Carlipoot
  */
 public class PlayScreen extends Screen {
 
     /**
-     * Creates a new scene with a scene manager and sets all references.
+     * Creates a new Screen with a ScreenManager and sets all references.
      *
-     * @param screenManager the screen manager to manage the screen.
+     * @param screenManager the ScreenManager to manage the Screen.
      */
     public PlayScreen(ScreenManager screenManager) {
         super(screenManager);
@@ -26,7 +26,7 @@ public class PlayScreen extends Screen {
     }
 
     /**
-     * Renders the screen and all components.
+     * Renders the Screen and all components.
      */
     @Override
     public void render() {
@@ -34,7 +34,7 @@ public class PlayScreen extends Screen {
     }
 
     /**
-     * Updates the screen and all components.
+     * Updates the Screen and all components.
      *
      * @param delta the change in time.
      */
@@ -44,7 +44,7 @@ public class PlayScreen extends Screen {
     }
 
     /**
-     * Disposes the screen and all components.
+     * Disposes the Screen and all components.
      */
     @Override
     public void dispose() {

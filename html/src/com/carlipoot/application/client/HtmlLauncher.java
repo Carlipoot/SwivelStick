@@ -1,9 +1,9 @@
-package com.carlipoot.game.client;
+package com.carlipoot.application.client;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.carlipoot.game.Application;
+import com.carlipoot.application.Application;
 
 public class HtmlLauncher extends GwtApplication {
 
