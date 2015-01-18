@@ -1,9 +1,7 @@
 package com.carlipoot.application.util;
 
-/**
- * A simple helper to create IDs.
- * @author Carlipoot
- */
+/** A simple helper to create IDs.
+ * @author Carlipoot */
 public class IDHelper {
 
     private static int id;
@@ -12,10 +10,8 @@ public class IDHelper {
         id = 0;
     }
 
-    /**
-     * Gets the next available ID.
-     * @return the ID.
-     */
+    /** Gets the next available ID.
+     * @return the ID. */
     public static int nextID() {
         return id++;
     }

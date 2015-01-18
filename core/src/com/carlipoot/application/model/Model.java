@@ -7,24 +7,23 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.carlipoot.application.entity.Entity;
 
-/**
- * An abstract class that defines the Box2D structure of an Entity.
- * @author Calripoot
- */
+import static com.carlipoot.application.util.Box2DHelper.toMeters;
+
+/** An abstract class that defines the Box2D structure of an Entity.
+ * @author Calripoot */
 public abstract class Model {
 
-    /**
-     * A reference to the Entity this belongs to.
-     */
+    /** A reference to the Entity this belongs to. */
     protected Entity entity;
 
-    private BodyDef bodyDef;
-    private Array<FixtureDef> fixtureDefs;
+    /** Defines the body of the Model. */
+    protected BodyDef bodyDef;
 
-    /**
-     * Creates a new Model for the specified Entity.
-     * @param entity the Entity this Model portrays.
-     */
+    /** Defines the fixtures of the Model. */
+    protected Array<FixtureDef> fixtureDefs;
+
+    /** Creates a new Model for the specified Entity.
+     * @param entity the Entity this Model portrays. */
     public Model(Entity entity) {
         this.entity = entity;
 
@@ -33,12 +32,15 @@ public abstract class Model {
         fixtureDefs = new Array<FixtureDef>();
     }
 
-    /**
-     * Creates the Model in the given world.
-     * @param world the World to create the Model in.
-     */
-    public void create(World world) {
+    /** Creates the Model in the given World at the specified position.
+     * @param world the World to create the Entity in.
+     * @param x the horizontal position.
+     * @param y the vertical position. */
+    public void create(World world, int x, int y) {
         if ( bodyDef == null ) return;
+
+        // Set the position
+        bodyDef.position.set(toMeters(x), toMeters(y));
 
         // Create Body in World and set the cyclic references
         Body body = world.createBody(bodyDef);

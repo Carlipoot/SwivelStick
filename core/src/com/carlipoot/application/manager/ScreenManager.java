@@ -6,52 +6,37 @@ import com.carlipoot.application.util.IDHelper;
 
 import java.util.Stack;
 
-/**
- * Manages all screens of the Application.
+/** Manages all screens of the Application.
  * <br><br>
  * This includes creating, rendering, updating and destroying the Screen.
- * @author Carlipoot
- */
+ * @author Carlipoot */
 public class ScreenManager {
 
-    /**
-     * ID for the main menu screen.
-     */
+    /** ID for the main menu screen. */
     public static final int MENU = IDHelper.nextID();
 
-    /**
-     * ID for the level select screen.
-     */
+    /** ID for the level select screen. */
     public static final int PLAY = IDHelper.nextID();
 
-    /**
-     * ID for the credits screen.
-     */
+    /** ID for the credits screen. */
     public static final int CREDIT = IDHelper.nextID();
 
-    /**
-     * ID for the game screen.
-     */
+    /** ID for the game screen. */
     public static final int GAME = IDHelper.nextID();
-
 
     private Application application;
     private Stack<Screen> screenStack;
 
-    /**
-     * Creates a ScreenManager with a reference to the Application.
-     * @param application the Application reference.
-     */
+    /** Creates a ScreenManager with a reference to the Application.
+     * @param application the Application reference. */
     public ScreenManager(Application application) {
         this.application = application;
         screenStack = new Stack<Screen>();
         pushScreen(GAME);
     }
 
-    /**
-     * Gets the Application reference.
-     * @return the reference to the Application.
-     */
+    /** Gets the Application reference.
+     * @return the reference to the Application. */
     public Application getApplication() {
         return application;
     }
@@ -64,42 +49,32 @@ public class ScreenManager {
         return null;
     }
 
-    /**
-     * Removes the most recent Screen.
-     */
+    /** Removes the most recent Screen. */
     public void popScreen() {
         Screen screen = screenStack.pop();
         screen.dispose();
     }
 
-    /**
-     * Sets the current Screen to the specified Screen.
-     * @param screen the ID of the Screen.
-     */
+    /** Sets the current Screen to the specified Screen.
+     * @param screen the ID of the Screen. */
     public void pushScreen(int screen) {
         screenStack.push(getScreen(screen));
     }
 
-    /**
-     * Swaps the current Screen to the specified Screen.
-     * @param screen the ID of the Screen.
-     */
+    /** Swaps the current Screen to the specified Screen.
+     * @param screen the ID of the Screen. */
     public void setScreen(int screen) {
         popScreen();
         pushScreen(screen);
     }
 
-    /**
-     * Renders the current Screen.
-     */
+    /** Renders the current Screen. */
     public void render() {
         screenStack.peek().render();
     }
 
-    /**
-     * Updates the current Screen.
-     * @param delta the change in time.
-     */
+    /** Updates the current Screen.
+     * @param delta the change in time. */
     public void update(float delta) {
         screenStack.peek().update(delta);
     }
