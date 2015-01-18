@@ -22,8 +22,12 @@ public abstract class Entity extends Actor {
      */
     protected ResourceManager resourceManager;
 
+    /**
+     * A reference the Body created in the World.
+     */
+    protected Body body;
+
     private Application application;
-    private Body body;
 
     /**
      * Creates an Entity with a reference to the EntityManager.
@@ -37,7 +41,18 @@ public abstract class Entity extends Actor {
         body = null;
     }
 
-    // These may be required soon
+    /**
+     * Sets the Body reference to the Entity.
+     * @param body the reference to the Body.
+     */
+    public void setBody(Body body) {
+        this.body = body;
+    }
+
+    /**
+     * Updates the Entity.
+     * @param delta the change in time.
+     */
     public abstract void update(float delta);
 
 }

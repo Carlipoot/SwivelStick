@@ -25,7 +25,6 @@ public class GameScreen extends Screen {
 
     /**
      * Creates a new Screen with a ScreenManager and sets all references.
-     *
      * @param screenManager the ScreenManager to manage the Screen.
      */
     public GameScreen(ScreenManager screenManager) {
@@ -65,7 +64,6 @@ public class GameScreen extends Screen {
 
     /**
      * Updates the Screen and all components.
-     *
      * @param delta the change in time.
      */
     @Override

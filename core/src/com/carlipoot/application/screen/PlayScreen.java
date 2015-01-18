@@ -10,7 +10,6 @@ public class PlayScreen extends Screen {
 
     /**
      * Creates a new Screen with a ScreenManager and sets all references.
-     *
      * @param screenManager the ScreenManager to manage the Screen.
      */
     public PlayScreen(ScreenManager screenManager) {
@@ -35,7 +34,6 @@ public class PlayScreen extends Screen {
 
     /**
      * Updates the Screen and all components.
-     *
      * @param delta the change in time.
      */
     @Override
