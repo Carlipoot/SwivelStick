@@ -1,9 +1,9 @@
-package com.carlipoot.swivelstick.client;
+package com.carlipoot.game.client;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.carlipoot.swivelstick.SwivelStick;
+import com.carlipoot.game.Application;
 
 public class HtmlLauncher extends GwtApplication {
 
@@ -14,6 +14,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener getApplicationListener () {
-                return new SwivelStick();
+                return new Application();
         }
 }

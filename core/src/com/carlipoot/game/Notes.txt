@@ -1,0 +1,86 @@
+
+== Screens ==
+
+Main Screen
+- Buttons
+ + Play (Level select)
+ + Options
+ + Credits
+- Background
+
+
+Play (Level Select) Screen
+- Table of levels
+ + Depicted by numbers
+ + Star on background shows perfection
+- Buttons
+ + Back
+
+
+Option Screen
+- Change sprite texture?
+- Sliders
+ + Sounds (On/Off)
+ + Cool animation effects (On/Off)?
+- Buttons
+ + Back
+
+
+Credits Screen
+- Shows names of creators (and assets?)
+- Buttons
+ + Back
+
+
+
+== Required Classes ==
+
+<Sprite>/<Actor> - for all entities/objects in the level
+<AssetManager> - to load and store all textures, maps and sounds
+- would be static and final in a class with all file paths
+<Button> - to implement the buttons in a table fashion
+- possibly add buttons to a <ButtonGroup>
+<Camera>/<OrthographicCamera> - because I saw it in the video and/or sample application
+<Game> - to allow adding of screens and such
+<GridPoint2> - to set locations in a world?
+<Group> - to hold all actors in a scene?
+<Logger> - to log any errors or debug messages
+<Map> ----------\
+<MapLayer> ------|
+<MapLayers> -----|- probably best option for creating the levels
+<MapObject> -----|
+<MapObjects> ----|
+<MapProperties> /
+<OrthographicCamera> - for rendering the levels
+<RevoluteJoint> - to connect and spin two objects
+<EventListners> - to handle events like input in menus and other things
+<Actions> - to hold a list of reusable actions
+
+
+
+
+
+== Optional Classes ==
+
+<Color> - has some pre-made colors
+<DelayAction>/<Action> - for use with menus?
+<Dialog> - for score area with buttons
+<Body> and <Fixture> - for 2d entities that may have physics
+<FocusListener> - to see if application is in focus (more so for desktops)
+<GearJoint>/<MotorJoint> and/or <Joint> - maybe to help rotation of the player and other objects
+<Image> - for background images?
+<ParticleEffect> - for cool effects
+<ParticleEffectLoader> - to load them?
+<ParticleEmmiter> - this one!!!
+
+
+
+== Box2D ==
+- a body has user data that can link back to the actor or application object
+- restitution means bouncy-nes
+- fixtures can be sensors, meaning the don't collide but can detect if two fixtures are overlapping
+- a distance joint allows two bodies to remain a constant distance away from each other
+
+
+
+

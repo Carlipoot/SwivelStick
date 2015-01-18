@@ -9,7 +9,7 @@
 	<inherits name='com.badlogic.gdx.ai' />
 
 	<inherits name='SwivelStick' />
-	<entry-point class='com.carlipoot.swivelstick.client.HtmlLauncher' />
+	<entry-point class='com.carlipoot.application.client.HtmlLauncher' />
 	
 	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
 </module>
