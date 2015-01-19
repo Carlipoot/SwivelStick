@@ -22,25 +22,23 @@ public abstract class Model {
     /** Defines the fixtures of the Model. */
     protected Array<FixtureDef> fixtureDefs;
 
-    /** Creates a new Model for the specified Entity.
-     * @param entity the Entity this Model portrays. */
-    public Model(Entity entity) {
+    /** Creates a new Model for the specified Entity at position x, y.
+     * @param entity the Entity this Model portrays.
+     * @param x the horizontal position.
+     * @param y the vertical position. */
+    public Model(Entity entity, int x, int y) {
         this.entity = entity;
 
         // Initialise variables
-        bodyDef = null;
+        bodyDef = new BodyDef();
+        bodyDef.position.set(toMeters(x), toMeters(y));
         fixtureDefs = new Array<FixtureDef>();
     }
 
     /** Creates the Model in the given World at the specified position.
-     * @param world the World to create the Entity in.
-     * @param x the horizontal position.
-     * @param y the vertical position. */
-    public void create(World world, int x, int y) {
+     * @param world the World to create the Entity in. */
+    public void create(World world) {
         if ( bodyDef == null ) return;
-
-        // Set the position
-        bodyDef.position.set(toMeters(x), toMeters(y));
 
         // Create Body in World and set the cyclic references
         Body body = world.createBody(bodyDef);

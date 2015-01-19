@@ -4,9 +4,11 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.carlipoot.application.input.Input;
-import com.carlipoot.application.manager.EntityManager;
 import com.carlipoot.application.manager.InputManager;
+import com.carlipoot.application.manager.LevelManager;
 import com.carlipoot.application.manager.ResourceManager;
 import com.carlipoot.application.manager.ScreenManager;
 
@@ -33,26 +35,29 @@ public class Application implements ApplicationListener {
 
 	private float accumulator;
 
-	private SpriteBatch spriteBatch;
 	private OrthographicCamera camera;
+	private SpriteBatch spriteBatch;
+	private World world;
 
-	private EntityManager entityManager;
+	private InputManager inputManager;
+	private LevelManager levelManager;
 	private ResourceManager resourceManager;
 	private ScreenManager screenManager;
 
 	/** Called on Application startup. */
 	@Override
 	public void create () {
-		spriteBatch = new SpriteBatch();
-
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, WIDTH, HEIGHT);
+		spriteBatch = new SpriteBatch();
+		world = new World(new Vector2(0.0f, -1.0f), true);
 
-		entityManager = new EntityManager(this);
+		inputManager = new InputManager();
+		levelManager = new LevelManager(this, world);
 		resourceManager = new ResourceManager(this);
 		screenManager = new ScreenManager(this);
 
-		Gdx.input.setInputProcessor(new InputManager());
+		Gdx.input.setInputProcessor(inputManager);
 	}
 
 	/** Called when rendering. */
@@ -88,16 +93,11 @@ public class Application implements ApplicationListener {
 	@Override
 	public void resume() {}
 
-	/** Gets the EntityManager.
-	 * @return the EntityManager. */
-	public EntityManager getEntityManager() {
-		return entityManager;
-	}
 
-	/** Gets the ResourceManager.
-	 * @return the ResourceManager. */
-	public ResourceManager getResourceManager() {
-		return resourceManager;
+	/** Gets the OrthographicCamera.
+	 * @return the OrthographicCamera. */
+	public OrthographicCamera getCamera() {
+		return camera;
 	}
 
 	/** Gets the main SpriteBatch.
@@ -106,10 +106,28 @@ public class Application implements ApplicationListener {
 		return spriteBatch;
 	}
 
-	/** Gets the OrthographicCamera.
-	 * @return the OrthographicCamera. */
-	public OrthographicCamera getCamera() {
-		return camera;
+	/** Gets the main World.
+	 * @return the World. */
+	public World getWorld() {
+		return world;
+	}
+
+	/** Gets the LevelManager.
+	 * @return the LevelManager. */
+	public LevelManager getLevelManager() {
+		return levelManager;
+	}
+
+	/** Gets the ResourceManager.
+	 * @return the ResourceManager. */
+	public ResourceManager getResourceManager() {
+		return resourceManager;
+	}
+
+	/** Gets the ScreenManager.
+	 * @return the ScreenManager. */
+	public ScreenManager getScreenManager() {
+		return screenManager;
 	}
 
 }

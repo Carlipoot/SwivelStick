@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Disposable;
 import com.carlipoot.application.Application;
-import com.carlipoot.application.manager.EntityManager;
+import com.carlipoot.application.manager.LevelManager;
 import com.carlipoot.application.manager.ResourceManager;
 import com.carlipoot.application.model.Model;
 
@@ -13,8 +13,8 @@ import com.carlipoot.application.model.Model;
  * @author Carlipoot */
 public abstract class Entity extends Actor implements Disposable {
 
-    /** A reference to the EntityManager. */
-    protected EntityManager entityManager;
+    /** A reference to the LevelManager. */
+    protected LevelManager levelManager;
 
     /** A reference to the ResourceManager. */
     protected ResourceManager resourceManager;
@@ -27,26 +27,18 @@ public abstract class Entity extends Actor implements Disposable {
 
     private Application application;
 
-    /** Creates an Entity with a reference to the EntityManager.
-     * @param entityManager the EntityManager reference. */
-    public Entity(EntityManager entityManager) {
-        this.entityManager = entityManager;
-        application = entityManager.getApplication();
-        resourceManager = application.getResourceManager();
-
-        body = null;
-        model = null;
-
-        entityManager.add(this);
-    }
-
-    /** Creates the Model in the given World at the specified position.
-     * @param world the World to create the Entity in.
+    /** Creates an Entity with a reference to the LevelManager at the specified position.
+     * @param levelManager the LevelManager reference.
      * @param x the horizontal position.
      * @param y the vertical position. */
-    public void create(World world, int x, int y) {
+    public Entity(LevelManager levelManager, int x, int y) {
+        this.levelManager = levelManager;
+        application = levelManager.getApplication();
+        resourceManager = application.getResourceManager();
+
         setPosition(x, y);
-        model.create(world, x, y);
+        body = null;
+        model = null;
     }
 
     /** Sets the Body reference to the Entity.
@@ -54,6 +46,10 @@ public abstract class Entity extends Actor implements Disposable {
     public void setBody(Body body) {
         this.body = body;
     }
+
+    /** Creates the Entity in the given World.
+     * @param world the World to create the Entity in. */
+    public abstract void create(World world);
 
     /** Updates the Entity.
      * @param delta the change in time. */
