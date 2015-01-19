@@ -33,6 +33,9 @@ public class Application implements ApplicationListener {
 	/** The constant time step used for rendering and updating. */
 	public static final float STEP = 1.0f / 60.0f;
 
+	/** The constant time used for rendering and updating. */
+	public static float time = 0;
+
 	private float accumulator;
 
 	private OrthographicCamera camera;
@@ -51,7 +54,7 @@ public class Application implements ApplicationListener {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, WIDTH, HEIGHT);
 		spriteBatch = new SpriteBatch();
-		world = new World(new Vector2(0.0f, -1.0f), true);
+		world = new World(new Vector2(0.0f, -0.6f), true);
 
 		inputManager = new InputManager();
 		levelManager = new LevelManager(this, world);
@@ -71,6 +74,8 @@ public class Application implements ApplicationListener {
 
 		while (accumulator >= STEP ) {
 			accumulator -= STEP;
+			time += STEP;
+
 			screenManager.update(STEP);
 			screenManager.render();
 			Input.update();
@@ -132,6 +137,12 @@ public class Application implements ApplicationListener {
 	 * @return the ScreenManager. */
 	public ScreenManager getScreenManager() {
 		return screenManager;
+	}
+
+	/** Gets the total running time.
+	 * @return the total time. */
+	public float getTime() {
+		return time;
 	}
 
 }

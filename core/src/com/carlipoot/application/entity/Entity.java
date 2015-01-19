@@ -36,7 +36,8 @@ public abstract class Entity extends Actor implements Disposable {
     /** The TextureRegion of the Entity. */
     protected TextureRegion textureRegion;
 
-    private Application application;
+    /** A reference to the Application. */
+    protected Application application;
 
     /** Creates an Entity with a reference to the LevelManager at the specified position.
      * @param levelManager the LevelManager reference.

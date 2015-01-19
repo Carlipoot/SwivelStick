@@ -18,6 +18,7 @@ public class Resources {
     // Animations
     public static final AssetDescriptor pinAnimation = new AssetDescriptor("animation\\pin.png", Texture.class);
     public static final AssetDescriptor exampleAnimation = new AssetDescriptor("animation\\example.png", Texture.class);
+    public static final AssetDescriptor exampleAnimation2 = new AssetDescriptor("animation\\example2.png", Texture.class);
 
 
     static {
@@ -25,7 +26,8 @@ public class Resources {
                 playerTexture,
                 pinTexture,
                 pinAnimation,
-                exampleAnimation
+                exampleAnimation,
+                exampleAnimation2
         );
     }
 
