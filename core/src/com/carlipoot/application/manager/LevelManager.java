@@ -1,5 +1,6 @@
 package com.carlipoot.application.manager;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -38,6 +39,12 @@ public class LevelManager {
      * @param matrix the matrix to render the World to. */
     public void renderDebug(Matrix4 matrix) {
         worldRenderer.render(world, matrix);
+    }
+
+    /** Renders the current Level.
+     * @param spriteBatch the SpriteBatch used for rendering. */
+    public void render(SpriteBatch spriteBatch) {
+        level.render(spriteBatch);
     }
 
     /** Updates the current Level.

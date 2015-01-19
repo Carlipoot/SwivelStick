@@ -1,5 +1,6 @@
 package com.carlipoot.application.entity;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.World;
 import com.carlipoot.application.manager.LevelManager;
@@ -27,6 +28,13 @@ public class EntityPlayer extends Entity {
         model.create(levelManager.getWorld());
 
         // Create visual
+
+    }
+
+    /** Renders the Entity.
+     * @param spriteBatch the SpriteBatch used for rendering. */
+    @Override
+    public void render(SpriteBatch spriteBatch) {
 
     }
 

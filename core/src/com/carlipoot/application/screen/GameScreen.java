@@ -38,6 +38,11 @@ public class GameScreen extends Screen {
     public void render() {
         clearScreen(Color.WHITE);
 
+        // Render the level
+        spriteBatch.begin();
+        levelManager.render(spriteBatch);
+        spriteBatch.end();
+
         // Render the world with debugger
         levelManager.renderDebug(worldCamera.combined);
     }

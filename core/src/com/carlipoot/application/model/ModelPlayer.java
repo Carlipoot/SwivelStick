@@ -26,6 +26,7 @@ public class ModelPlayer extends Model {
         PolygonShape mainShape = new PolygonShape();
         mainShape.setAsBox(toMeters(25), toMeters(5));
         mainFixture.shape = mainShape;
+        mainFixture.density = 1.0f;
 
         fixtureDefs.add(mainFixture);
 
@@ -34,6 +35,7 @@ public class ModelPlayer extends Model {
         PolygonShape newShape = new PolygonShape();
         newShape.setAsBox(toMeters(30), toMeters(25));
         newFixture.shape = newShape;
+        newFixture.density = 1.0f;
 
         fixtureDefs.add(newFixture);
     }

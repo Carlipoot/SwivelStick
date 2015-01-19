@@ -1,5 +1,6 @@
 package com.carlipoot.application.level;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
@@ -40,6 +41,16 @@ public abstract class Level implements Disposable{
         }
     }
 
+    /** Renders the current Level.
+     * @param spriteBatch the SpriteBatch used for rendering. */
+    public void render(SpriteBatch spriteBatch) {
+        for ( Entity entity : entities) {
+            if ( entity != null ) entity.render(spriteBatch);
+        }
+    }
+
+    /** Updates every Entity in the Level.
+     * @param delta the change in time.*/
     public void update(float delta) {
         for ( Entity entity : entities) {
             if ( entity != null ) entity.update(delta);

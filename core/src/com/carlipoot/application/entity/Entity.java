@@ -1,5 +1,6 @@
 package com.carlipoot.application.entity;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -50,6 +51,10 @@ public abstract class Entity extends Actor implements Disposable {
     /** Creates the Entity in the given World.
      * @param world the World to create the Entity in. */
     public abstract void create(World world);
+
+    /** Renders the Entity.
+     * @param spriteBatch the SpriteBatch used for rendering. */
+    public abstract void render(SpriteBatch spriteBatch);
 
     /** Updates the Entity.
      * @param delta the change in time. */
