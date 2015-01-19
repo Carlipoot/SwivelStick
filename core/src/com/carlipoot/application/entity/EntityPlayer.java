@@ -1,12 +1,12 @@
 package com.carlipoot.application.entity;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.carlipoot.application.manager.LevelManager;
 import com.carlipoot.application.model.ModelPlayer;
+import com.carlipoot.application.util.Resources;
 
-/** The main Entity that is controlled by the player.
+/** The main Entity that is controlled by the playerTexture.
  * @author Carlipoot */
 public class EntityPlayer extends Entity {
 
@@ -18,39 +18,14 @@ public class EntityPlayer extends Entity {
         super(levelManager, x, y);
 
         model = new ModelPlayer(this, x, y);
+        setTexture((Texture) resourceManager.get(Resources.playerTexture));
     }
 
     /** Creates the Entity in the given World.
      * @param world the World to create the Entity in. */
     @Override
     public void create(World world) {
-        // Create physical
-        model.create(levelManager.getWorld());
-
-        // Create visual
-
-    }
-
-    /** Renders the Entity.
-     * @param spriteBatch the SpriteBatch used for rendering. */
-    @Override
-    public void render(SpriteBatch spriteBatch) {
-
-    }
-
-    /** Updates the Entity.
-     * @param delta the change in time. */
-    @Override
-    public void update(float delta) {
-        // Match visual to physical
-        setPosition(body.getPosition().x, body.getPosition().y);
-        setRotation(body.getAngle() * MathUtils.radiansToDegrees);
-    }
-
-    /** Disposes of all objects. */
-    @Override
-    public void dispose() {
-        levelManager.getWorld().destroyBody(body);
+        model.create(world);
     }
 
 }

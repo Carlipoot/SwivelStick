@@ -16,7 +16,7 @@ public class Level1 extends Level {
 
         entities.add(new EntityPlayer(levelManager, 150, 200));
         entities.add(new EntityPlayer(levelManager, 200, 400));
-        entities.add(new EntityPlayer(levelManager, 250, 800));
+        entities.add(new EntityPlayer(levelManager, 250, 500));
         entities.add(new EntityPin(levelManager, Application.WIDTH / 2, 20));
     }
 }

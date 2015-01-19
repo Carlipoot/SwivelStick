@@ -1,5 +1,6 @@
 package com.carlipoot.application.manager;
 
+import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.carlipoot.application.Application;
 import com.carlipoot.application.util.Resources;
@@ -20,7 +21,13 @@ public class ResourceManager extends AssetManager {
 
     /** Loads all resources. */
     public void loadAll() {
-        load(Resources.player);
+        if ( Resources.resources == null ) return;
+
+        for (AssetDescriptor resource : Resources.resources ) {
+            load(resource);
+        }
+
+        finishLoading();
     }
 
 }

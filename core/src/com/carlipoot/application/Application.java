@@ -47,6 +47,7 @@ public class Application implements ApplicationListener {
 	/** Called on Application startup. */
 	@Override
 	public void create () {
+		// Initialise variables
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, WIDTH, HEIGHT);
 		spriteBatch = new SpriteBatch();
@@ -57,7 +58,10 @@ public class Application implements ApplicationListener {
 		resourceManager = new ResourceManager(this);
 		screenManager = new ScreenManager(this);
 
+		// Process variables
 		Gdx.input.setInputProcessor(inputManager);
+		resourceManager.loadAll();
+		screenManager.pushScreen(ScreenManager.GAME);
 	}
 
 	/** Called when rendering. */

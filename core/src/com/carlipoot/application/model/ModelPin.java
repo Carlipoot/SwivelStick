@@ -8,7 +8,7 @@ import com.carlipoot.application.entity.Entity;
 
 import static com.carlipoot.application.util.Box2DHelper.toMeters;
 
-/** Models the main Entity that is controlled by the player.
+/** Models the main Entity that is controlled by the playerTexture.
  * @author Carlipoot */
 public class ModelPin extends Model {
 

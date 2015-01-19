@@ -32,7 +32,6 @@ public class ScreenManager {
     public ScreenManager(Application application) {
         this.application = application;
         screenStack = new Stack<Screen>();
-        pushScreen(GAME);
     }
 
     /** Gets the Application reference.
