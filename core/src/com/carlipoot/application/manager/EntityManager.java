@@ -78,8 +78,10 @@ public class EntityManager extends Manager {
     /** Disposes of every Entity. */
     public void disposeEntities() {
         for ( Entity entity : entities) {
-            if ( entity != null ) entity.dispose();
+            if (entity != null) entity.dispose();
         }
+
+        entities.removeAll(entities, true);
     }
 
 }

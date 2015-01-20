@@ -19,28 +19,19 @@ public abstract class Model {
     /** Defines the fixtures of the Model. */
     protected Array<FixtureDef> fixtureDefs;
 
-    /** Creates a new Model for the specified Entity.
-     * @param entity the Entity this Model portrays. */
-    public Model(Entity entity) {
-        this.entity = entity;
-
-        // Initialise variables
+    /** Creates a new Model. */
+    public Model() {
         bodyDef = new BodyDef();
         fixtureDefs = new Array<FixtureDef>();
-
-        // Create hit box for Entity
-        FixtureDef hitBox = new FixtureDef();
-        PolygonShape hitBoxShape = new PolygonShape();
-        hitBoxShape.setAsBox(toMeters(entity.getWidth() / 2), toMeters(entity.getHeight() / 2));
-        hitBox.shape = hitBoxShape;
-        hitBox.density = 1.0f;
-        fixtureDefs.add(hitBox);
     }
 
-    /** Creates the Model in the given World at the specified position.
-     * @param world the World to create the Entity in. */
-    public void create(World world) {
-        if ( bodyDef == null ) return;
+    /** Creates the Model in the given World with all components.
+     * @param world the World to create the Model in.
+     * @param entity the Entity that's creating the Model. */
+    public void createModel(World world, Entity entity) {
+        setEntity(entity);
+
+        defineModel();
 
         // Create Body in World and set the cyclic references
         bodyDef.position.set(toMeters(entity.getX()), toMeters(entity.getY()));
@@ -52,6 +43,25 @@ public abstract class Model {
         for ( FixtureDef fixture : fixtureDefs) {
             if ( fixture != null ) body.createFixture(fixture);
         }
+    }
+
+    /** Defines a hit box for the Model. */
+    public void defineHitBox() {
+        FixtureDef hitBox = new FixtureDef();
+        PolygonShape hitBoxShape = new PolygonShape();
+        hitBoxShape.setAsBox(toMeters(entity.getWidth() / 2), toMeters(entity.getHeight() / 2));
+        hitBox.shape = hitBoxShape;
+        hitBox.density = 1.0f;
+        fixtureDefs.add(hitBox);
+    }
+
+    /** Defines the Model with all components. */
+    public abstract void defineModel();
+
+    /** Sets the Entity this Model belongs to.
+     * @param entity the Entity. */
+    public void setEntity(Entity entity) {
+        this.entity = entity;
     }
 
 }

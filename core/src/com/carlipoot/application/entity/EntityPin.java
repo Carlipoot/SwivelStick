@@ -15,7 +15,7 @@ public class EntityPin extends Entity {
     public EntityPin(EntityManager entityManager, Animation animation) {
         super(entityManager, animation);
 
-        model = new ModelPin(this);
+        model = new ModelPin();
     }
 
     /** Creates the Entity in the given World.
@@ -25,7 +25,7 @@ public class EntityPin extends Entity {
     @Override
     public void create(World world, float x, float y) {
         setPosition(x, y);
-        model.create(world);
+        model.createModel(world, this);
     }
 
 }

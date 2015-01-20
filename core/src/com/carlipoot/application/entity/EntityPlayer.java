@@ -15,7 +15,7 @@ public class EntityPlayer extends Entity {
     public EntityPlayer(EntityManager entityManager, Texture texture) {
         super(entityManager, texture);
 
-        model = new ModelPlayer(this);
+        model = new ModelPlayer();
     }
 
     /** Creates the Entity in the given World.
@@ -25,7 +25,7 @@ public class EntityPlayer extends Entity {
     @Override
     public void create(World world, float x, float y) {
         setPosition(x, y);
-        model.create(world);
+        model.createModel(world, this);
         body.setAngularVelocity(1.6f);
     }
 

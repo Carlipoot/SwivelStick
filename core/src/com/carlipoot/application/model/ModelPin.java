@@ -4,21 +4,24 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.carlipoot.application.Application;
-import com.carlipoot.application.entity.Entity;
 
 import static com.carlipoot.application.util.Box2DHelper.toMeters;
 
-/** Models the main Entity that is controlled by the playerTexture.
+/** Models the main Entity that is controlled by the player.
  * @author Carlipoot */
 public class ModelPin extends Model {
 
-    /** Creates a new Model for the specified.
-     * @param entity the Entity this Model portrays. */
-    public ModelPin(Entity entity) {
-        super(entity);
+    /** Creates a new Model. */
+    public ModelPin() {
+        super();
+    }
 
-        // Edit the Body
+    /** Defines the Model with all components. */
+    @Override
+    public void defineModel() {
         bodyDef.type = BodyDef.BodyType.StaticBody;
+
+         defineHitBox();
 
         // Create Fixtures
         FixtureDef mainFixture = new FixtureDef();
