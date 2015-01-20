@@ -15,6 +15,7 @@ public class Animation {
     private int cols;
     private int rows;
     private float duration;
+    private float time;
 
     /** Creates and Animation.
      * @param animationTexture the Animations Texture.
@@ -45,10 +46,13 @@ public class Animation {
     }
 
     /** Gets the current TextureRegion.
-     * @param time total time passed.
      * @return the current TextureRegion. */
-    public TextureRegion getTextureRegion(float time) {
+    public TextureRegion getTextureRegion() {
         return animation.getKeyFrame(time, true);
+    }
+
+    public void update(float delta) {
+        time += delta;
     }
 
 }

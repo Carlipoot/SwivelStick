@@ -7,10 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.carlipoot.application.input.Input;
-import com.carlipoot.application.manager.InputManager;
-import com.carlipoot.application.manager.LevelManager;
-import com.carlipoot.application.manager.ResourceManager;
-import com.carlipoot.application.manager.ScreenManager;
+import com.carlipoot.application.manager.*;
 
 /** The main class that is launched on Application startup.
  * <br><br>
@@ -33,15 +30,13 @@ public class Application implements ApplicationListener {
 	/** The constant time step used for rendering and updating. */
 	public static final float STEP = 1.0f / 60.0f;
 
-	/** The constant time used for rendering and updating. */
-	public static float time = 0;
-
 	private float accumulator;
 
 	private OrthographicCamera camera;
 	private SpriteBatch spriteBatch;
 	private World world;
 
+	private EntityManager entityManager;
 	private InputManager inputManager;
 	private LevelManager levelManager;
 	private ResourceManager resourceManager;
@@ -56,9 +51,10 @@ public class Application implements ApplicationListener {
 		spriteBatch = new SpriteBatch();
 		world = new World(new Vector2(0.0f, -0.6f), true);
 
+		entityManager = new EntityManager(this);
 		inputManager = new InputManager();
-		levelManager = new LevelManager(this, world);
-		resourceManager = new ResourceManager(this);
+		levelManager = new LevelManager(this);
+		resourceManager = new ResourceManager();
 		screenManager = new ScreenManager(this);
 
 		// Process variables
@@ -74,7 +70,6 @@ public class Application implements ApplicationListener {
 
 		while (accumulator >= STEP ) {
 			accumulator -= STEP;
-			time += STEP;
 
 			screenManager.update(STEP);
 			screenManager.render();
@@ -121,6 +116,12 @@ public class Application implements ApplicationListener {
 		return world;
 	}
 
+	/** Gets the EntityManager.
+	 * @return the EntityManager. */
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
 	/** Gets the LevelManager.
 	 * @return the LevelManager. */
 	public LevelManager getLevelManager() {
@@ -137,12 +138,6 @@ public class Application implements ApplicationListener {
 	 * @return the ScreenManager. */
 	public ScreenManager getScreenManager() {
 		return screenManager;
-	}
-
-	/** Gets the total running time.
-	 * @return the total time. */
-	public float getTime() {
-		return time;
 	}
 
 }

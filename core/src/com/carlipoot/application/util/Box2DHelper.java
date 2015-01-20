@@ -14,6 +14,13 @@ public class Box2DHelper {
         return pixels / PIXELSPERMETER;
     }
 
+    /** Converts pixels to meters.
+     * @param pixels the number of pixels.
+     * @return the converted number of meters. */
+    public static float toMeters(float pixels) {
+        return pixels / PIXELSPERMETER;
+    }
+
     /** Converts meters to pixels.
      * @param meters the number of meters.
      * @return the converted number of pixels. */

@@ -2,6 +2,7 @@ package com.carlipoot.application.screen;
 
 import com.badlogic.gdx.graphics.Color;
 import com.carlipoot.application.Application;
+import com.carlipoot.application.manager.EntityManager;
 import com.carlipoot.application.manager.LevelManager;
 import com.carlipoot.application.manager.ScreenManager;
 import com.carlipoot.application.util.Box2DCamera;
@@ -11,6 +12,7 @@ import com.carlipoot.application.util.Box2DCamera;
 public class GameScreen extends Screen {
 
     private LevelManager levelManager;
+    private EntityManager entityManager;
     private Box2DCamera worldCamera;
 
 
@@ -18,6 +20,8 @@ public class GameScreen extends Screen {
      * @param screenManager the ScreenManager to manage the Screen. */
     public GameScreen(ScreenManager screenManager) {
         super(screenManager);
+
+        entityManager = application.getEntityManager();
 
         levelManager = application.getLevelManager();
         levelManager.setLevel(LevelManager.LEVEL1);
@@ -40,7 +44,7 @@ public class GameScreen extends Screen {
 
         // Render the level
         spriteBatch.begin();
-        levelManager.render(spriteBatch);
+        entityManager.render();
         spriteBatch.end();
 
         // Render the world with debugger
@@ -52,7 +56,12 @@ public class GameScreen extends Screen {
     @Override
     public void update(float delta) {
         worldCamera.update();
+
+        // Update the world
         levelManager.update(delta);
+
+        // Update the textures to match world
+        entityManager.update(delta);
     }
 
     /** Disposes the Screen and all components. */

@@ -10,7 +10,7 @@ import java.util.Stack;
  * <br><br>
  * This includes creating, rendering, updating and destroying the Screen.
  * @author Carlipoot */
-public class ScreenManager {
+public class ScreenManager extends Manager {
 
     /** ID for the main menu screen. */
     public static final int MENU = IDHelper.nextID();
@@ -24,20 +24,13 @@ public class ScreenManager {
     /** ID for the game screen. */
     public static final int GAME = IDHelper.nextID();
 
-    private Application application;
     private Stack<Screen> screenStack;
 
     /** Creates a ScreenManager with a reference to the Application.
      * @param application the Application reference. */
     public ScreenManager(Application application) {
-        this.application = application;
+        super(application);
         screenStack = new Stack<Screen>();
-    }
-
-    /** Gets the Application reference.
-     * @return the reference to the Application. */
-    public Application getApplication() {
-        return application;
     }
 
     private Screen getScreen(int screen) {

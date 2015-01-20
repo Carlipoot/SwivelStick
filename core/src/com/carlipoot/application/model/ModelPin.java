@@ -12,12 +12,10 @@ import static com.carlipoot.application.util.Box2DHelper.toMeters;
  * @author Carlipoot */
 public class ModelPin extends Model {
 
-    /** Creates a new Model for the specified Entity at position x, y.
-     * @param entity the Entity this Model portrays.
-     * @param x the horizontal position.
-     * @param y the vertical position. */
-    public ModelPin(Entity entity, int x, int y) {
-        super(entity, x, y);
+    /** Creates a new Model for the specified.
+     * @param entity the Entity this Model portrays. */
+    public ModelPin(Entity entity) {
+        super(entity);
 
         // Edit the Body
         bodyDef.type = BodyDef.BodyType.StaticBody;
